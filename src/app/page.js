@@ -3,6 +3,8 @@ import Image from 'next/image'
 import styles from './globals.css'
 import { useState } from 'react'
 import ListaClientes from './componentes/listaClientes'
+import FormClientes from './componentes/formClientes'
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const usuario = {
@@ -40,7 +42,7 @@ function Perfil(){
       <h1>{usuario.nome}</h1>
       <img 
         className='avatar'
-        src= {usuario.imageUrl}
+        src={usuario.imageUrl}
         alt= "Imagem do fulano de tal"
         width={usuario.imageSize}
       />
@@ -54,13 +56,20 @@ export default function Home() {
   var logado = true
   var conteudo
   if(logado){
-    conteudo = <Perfil />
+    conteudo = <>
+    {/* <div>
+      <Perfil />
+    </div> */}
+    <div>
+      <FormClientes />
+    </div>
+    </>
   } else {
     conteudo = <h1>Realize o Login</h1>
   }
   return (
     <main>
-      {logado ? <Perfil /> : <h1>Realize o Login</h1>}
+      {conteudo}
       <div>
         <ListaClientes />
       </div>
