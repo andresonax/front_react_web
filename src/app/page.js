@@ -13,27 +13,6 @@ const usuario = {
   imageSize : 90
 }
 
-// const produtos = [
-//   {titulo : "Maçã", id : 1, fruta : true},
-//   {titulo : "Couve", id : 2, fruta: false},
-//   {titulo : "Mamão", id : 3, fruta: true},
-//   {titulo : "Alface", id : 4, fruta: false},
-// ]
-
-// const listaProdutos = produtos.map(
-//     e => 
-//       <li style={{
-//         color : e.fruta ? "red" : "blue"
-//       }} key={e.id}>
-//         {e.titulo}
-//       </li>
-//   )
-
-// function MeuBotao() {
-//   return(
-//     <button>Meu Botão Como Componente</button>
-//   )
-// }
 
 
 function Perfil(){  
@@ -53,6 +32,14 @@ function Perfil(){
 }
 
 export default function Home() {
+  
+  const [ formData, setFormData ] = useState({
+    nome: '',
+    sobrenome: '',
+    email: '',
+    salario: 0,
+  })
+  
   var logado = true
   var conteudo
   if(logado){
@@ -61,7 +48,7 @@ export default function Home() {
       <Perfil />
     </div> */}
     <div>
-      <FormClientes />
+      <FormClientes formData = {formData} setFormData = {setFormData}/>
     </div>
     </>
   } else {
@@ -71,7 +58,7 @@ export default function Home() {
     <main>
       {conteudo}
       <div>
-        <ListaClientes />
+        <ListaClientes formData = {formData} setFormData = {setFormData} />
       </div>
     </main>
   )
